@@ -10,7 +10,6 @@ done
 
 if [ ! -f /home/pi/.updating ]; then
 	sudo python $COMPANION_DIR/tools/ping_enumerator.py || true
-	sudo python $COMPANION_DIR/tools/s500_enumerator.py || true
 	if [ -d /dev/serial/ping ]; then
 		sudo -H -u pi screen -dm -S pingproxy pingproxy.py --device $(ls -d /dev/serial/ping/Ping1* | head -1)
 		sudo -H -u pi screen -dm -S s500proxy pingproxy.py --device $(ls -d /dev/serial/ping/S500* | head -1)
